@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import Timer from './timer.js';
+import TimerControls from './timer-controls.js';
 
 const TimerList = ({ timers }) => {
-	const timerEls = timers.map(t => <Timer key={t.id} id={t.id} width={200} height={40} />);
+	const timerEls = timers.map(t => <TimerControls key={t.id} id={t.id} />);
 	return (
 		<div>
 			{timerEls}

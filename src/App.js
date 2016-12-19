@@ -3,16 +3,10 @@ import { connect } from 'react-redux';
 
 import logo from './logo.svg';
 import './App.css';
-import TimerList from './components/TimerList.js'
+import TimerList from './components/TimerList.js';
+import { timerNew } from './actions/index.js';
 
 let id = 0;
-
-const newTimer = (id, maxValue) => ({
-	type: 'NEW_TIMER',
-	id,
-	value: 0,
-	maxValue,
-});
 
 const App = ({dispatch}) => {
   return (
@@ -24,7 +18,7 @@ const App = ({dispatch}) => {
       <p className="App-intro">
         To get started, edit <code>src/App.js</code> and save to reload.
       </p>
-      <button onClick={() => dispatch(newTimer(id++, 5000))} >New Timer</button>
+      <button onClick={() => dispatch(timerNew(id++, 5000))} >New Timer</button>
       <TimerList />
     </div>
   );

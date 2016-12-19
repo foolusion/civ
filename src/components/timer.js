@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { getTimerByID } from '../reducers/index.js';
+import { getTimerByID } from '../reducers/timers.js';
 
 const Timer = ({ width, height, value, maxValue }) => {
 	const divStyle = {
@@ -11,7 +11,7 @@ const Timer = ({ width, height, value, maxValue }) => {
 	};
 
 	return (
-		<div style={ {height, width } } >
+		<div style={ {height, width, border: '1px solid black' } } >
 			<div style={ divStyle }/>
 		</div>
        );

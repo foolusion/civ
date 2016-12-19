@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 import App from './App';
 import './index.css';
 import reducers from './reducers';
+import { gameTimerTick } from './actions/index.js';
 
 let store = createStore(reducers);
 
@@ -15,20 +16,10 @@ const run = () => {
 	const now = performance.now()
 	const diff = now - lastTime
 	if (diff < maxTick) {
-		store.dispatch({
-			type: 'TICK',
-			diff: diff,
-			wall: now,
-			interval: requestAnimationFrame(run),
-		});
+		store.dispatch(gameTimerTick(diff, now, requestAnimationFrame(run)));
 		return
 	}
-	store.dispatch({
-		type: 'TICK',
-		diff: maxTick,
-		wall: now,
-		interval: requestAnimationFrame(run),
-	});
+	store.dispatch(gameTimerTick(maxTick, now, requestAnimationFrame(run)));
 }
 
 run();
